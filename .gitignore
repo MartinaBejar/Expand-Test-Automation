@@ -1,0 +1,19 @@
+ 
+# Node
+node_modules/
+
+# Playwright
+playwright-report/
+test-results/
+
+# OS
+.DS_Store
+
+# Logs
+npm-debug.log*
+
+# Playwright
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
