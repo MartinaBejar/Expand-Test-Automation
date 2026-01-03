@@ -1,18 +1,19 @@
 import { test, expect } from '@playwright/test';
+import { LoginPage } from '../../core/pages/login.page';
 
 test.describe('Login', () => {
 
   test('User can login with valid credentials', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+
     // Arrange
-    await page.goto('https://practice.expandtesting.com/login');
+    await loginPage.navigate();
 
     // Act
-    await page.locator('#username').fill('practice');
-    await page.locator('#password').fill('SuperSecretPassword!');
-    await page.locator('button[type="submit"]').click();
+    await loginPage.login('practice', 'SuperSecretPassword!');
 
     // Assert
-    await expect(page.locator('.alert-success')).toBeVisible();
+    await expect(loginPage.successAlert).toBeVisible();
     await expect(page).toHaveURL(/.*secure/);
   });
 
