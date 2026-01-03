@@ -6,6 +6,8 @@ export class LoginPage {
   readonly passwordInput: Locator;
   readonly submitButton: Locator;
   readonly successAlert: Locator;
+  readonly errorAlert: Locator;
+
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +15,8 @@ export class LoginPage {
     this.passwordInput = page.locator('#password');
     this.submitButton = page.locator('button[type="submit"]');
     this.successAlert = page.locator('.alert-success');
+    this.errorAlert = page.locator('.alert-danger');
+
   }
 
   async navigate(): Promise<void> {

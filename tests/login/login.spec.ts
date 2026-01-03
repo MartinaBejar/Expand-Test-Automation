@@ -17,4 +17,19 @@ test.describe('Login', () => {
     await expect(page).toHaveURL(/.*secure/);
   });
 
+
+  test('User cannot login with invalid password', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  // Arrange
+  await loginPage.navigate();
+
+  // Act
+  await loginPage.login('practice', 'WrongPassword');
+
+  // Assert
+  await expect(loginPage.errorAlert).toBeVisible();
+  await expect(page).toHaveURL(/.*login/);
+});
+
 });
